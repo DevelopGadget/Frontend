@@ -3,10 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <title>Equipos</title>
-  <link rel="stylesheet" href="Css/StyleIndex.css">
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="Css/StyleForm.css">
+  <link rel="stylesheet" href="Css/Style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
 </head>
 <body>
+
   <header>
     <div calss="Ancho">
         <div class="Logo">
@@ -23,27 +29,39 @@
         </nav>
     </div>
   </header>
+
   <div id="particles-js">
-      <form class="ui form">
-          <div class="field">
-            <label>First Name</label>
-            <input type="text" name="first-name" placeholder="First Name">
+    <form>
+      <div class="row">
+        <div class="col">
+          <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
+          <input type="text" class="form-control" placeholder="Nombre Del Equipo">
+        </div>
+        <div class="col">
+          <label for="Nombre Del Equipo">Nombre Del Estadio:</label>
+          <input type="text" class="form-control" placeholder="Nombre Del Estadio">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="Url De Imagen Del Estadio">Url De Imagen Del Estadio:</label>
+          <input type="text" class="form-control" placeholder="Url De Imagen Del Estadio">
+        </div>
+        <div class="col">
+          <label for="Url De Imagen Del Escudo">Url De Imagen Del Esucudo:</label>
+          <input type="text" class="form-control" placeholder="Url De Imagen Del Escudo">
+        </div>
+      </div>
+      <div class="row">
+          <div class="col">
+              <button type="submit" class="btn btn-primary mb-2">Enviar</button>
           </div>
-          <div class="field">
-            <label>Last Name</label>
-            <input type="text" name="last-name" placeholder="Last Name">
-          </div>
-          <div class="field">
-            <div class="ui checkbox">
-              <input type="checkbox" tabindex="0" class="hidden">
-              <label>I agree to the Terms and Conditions</label>
-            </div>
-          </div>
-          <button class="ui button" type="submit">Submit</button>
-        </form>
+        </div>
+    </form>
   </div>
 
   <script src="Js/Particulas/particles.js"></script>
   <script src="Js/Particulas/demo/js/app.js"></script>
+
 </body>
 </html>
