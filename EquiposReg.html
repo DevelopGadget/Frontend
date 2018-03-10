@@ -30,30 +30,42 @@
 
   <div id="particles-js">
 
-    <form>
+    <form class="needs-validation" novalidate>
       <div class="row">
         <div class="col">
           <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
-          <input type="text" class="form-control" placeholder="Nombre Del Equipo">
+          <input type="text" class="form-control" placeholder="Nombre Del Equipo" required>
+          <div class="invalid-feedback">
+              Ingresar Dato
+          </div>
         </div>
         <div class="col">
           <label for="Nombre Del Equipo">Nombre Del Estadio:</label>
-          <input type="text" class="form-control" placeholder="Nombre Del Estadio">
+          <input type="text" class="form-control" placeholder="Nombre Del Estadio" required>
+          <div class="invalid-feedback">
+              Ingresar Dato
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <label for="Url De Imagen Del Estadio">Url De Imagen Del Estadio:</label>
-          <input type="text" class="form-control" placeholder="Url De Imagen Del Estadio">
+          <input type="text" class="form-control" placeholder="Url De Imagen Del Estadio" required>
+          <div class="invalid-feedback">
+              Ingresar Dato
+          </div>
         </div>
         <div class="col">
           <label for="Url De Imagen Del Escudo">Url De Imagen Del Esucudo:</label>
-          <input type="text" class="form-control" placeholder="Url De Imagen Del Escudo">
+          <input type="text" class="form-control" placeholder="Url De Imagen Del Escudo" required>
+          <div class="invalid-feedback">
+              Ingresar Dato
+          </div>
         </div>
       </div>
       <div class="row">
           <div class="col">
-              <button type="submit" class="btn btn-primary mb-2">Enviar</button>
+              <button type="submit" class="btn btn-primary mb-2" id="submit">Enviar</button>
           </div>
       </div>
       <div class="row">
@@ -71,6 +83,7 @@
 
   <script src="Js/Particulas/particles.js"></script>
   <script src="Js/Particulas/demo/js/app.js"></script>
+  <script src="Js/ValForm.js"></script>
 
 </body>
 </html>
