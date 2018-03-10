@@ -5,8 +5,9 @@
 
 header{
   width: 100%;
-  background: maroon;
+  background: rgba(0, 0, 0, .8);
   height: 70px;
+  position: fixed;
 }
 
 .Ancho{
@@ -58,12 +59,12 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-  color: aqua;
+  color: cyan;
   font-size: 23px;
 
 }
 
 @font-face{
   font-family: Lobster;
-  src: url(Fuente/Lobster-Regular.ttf)
+  src: url(../Fuente/Lobster-Regular.ttf)
 }

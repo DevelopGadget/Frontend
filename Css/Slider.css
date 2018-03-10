@@ -1,0 +1,6 @@
+#particles-js{
+  background: url(../Imagenes/Fondo.jpg);
+  background-position: center;
+  background-attachment: contain;
+  background-size: cover;
+}
