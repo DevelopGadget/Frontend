@@ -60,10 +60,10 @@ nav ul li{
   display: inline;
 }
 
-header nav ul li a{
+nav ul li a{
+  text-decoration: none;
   color: white;
   font-size: 20px;
-  text-decoration: none;
   padding-left: 25px; 
   font-weight: bold;
   letter-spacing: 1px;
