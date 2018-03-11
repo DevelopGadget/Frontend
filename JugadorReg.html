@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Equipos</title>
+  <title>Jugadores</title>
   <link rel="stylesheet" href="Css/Style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="Css/StyleForm.css">
@@ -33,15 +33,22 @@
     <form class="needs-validation" novalidate method="POST">
       <div class="row">
         <div class="col">
-          <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
-          <input type="text" class="form-control" placeholder="Nombre Del Equipo" required>
+          <label for="Nombre Del Jugador">Nombre Del Jugador:</label>
+          <input type="text" class="form-control" placeholder="Nombre Del Jugador" required>
           <div class="invalid-feedback">
               Ingresar Dato
           </div>
         </div>
         <div class="col">
-          <label for="Nombre Del Equipo">Nombre Del Estadio:</label>
-          <input type="text" class="form-control" placeholder="Nombre Del Estadio" required>
+          <label for="Edad">Edad:</label>
+          <input type="text" class="form-control" placeholder="Edad" required>
+          <div class="invalid-feedback">
+              Ingresar Dato
+          </div>
+        </div>
+        <div class="col">
+          <label for="Posición">Posición:</label>
+          <input type="text" class="form-control" placeholder="Posición" required>
           <div class="invalid-feedback">
               Ingresar Dato
           </div>
@@ -49,15 +56,31 @@
       </div>
       <div class="row">
         <div class="col">
-          <label for="Url De Imagen Del Estadio">Url De Imagen Del Estadio:</label>
-          <input type="text" class="form-control" placeholder="Url De Imagen Del Estadio" required>
+          <label for="Nombre De La Nacionalidad">Nombre De La Nacionalidad:</label>
+          <input type="text" class="form-control" placeholder="Nombre De La Nacionalidad" required>
           <div class="invalid-feedback">
               Ingresar Dato
           </div>
         </div>
         <div class="col">
-          <label for="Url De Imagen Del Escudo">Url De Imagen Del Esucudo:</label>
-          <input type="text" class="form-control" placeholder="Url De Imagen Del Escudo" required>
+          <label for="Url De Imagen Del Escudo De La Nacionalidad">Url De Imagen Del Esucudo De La Nacionalidad:</label>
+          <input type="text" class="form-control" placeholder="Url De Imagen Del Escudo De La Nacionalidad" required>
+          <div class="invalid-feedback">
+              Ingresar Dato
+          </div>
+        </div>
+        <div class="col">
+          <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
+          <div class="bs-example">
+              <div class="btn-group">
+                  <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">Report <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                      <li><a href="#">View</a></li>
+                      <li><a href="#">Download</a></li>
+                      <li class="disabled"><a href="#">Edit / Delete</a></li>
+                  </ul>
+              </div>
+          </div>
           <div class="invalid-feedback">
               Ingresar Dato
           </div>
@@ -70,7 +93,7 @@
       </div>
       <div class="row">
           <div class="col">
-              <label for="Previsualización Del Estadio">Previsualización Del Estadio:</label>
+              <label for="Previsualización Del Estadio">Previsualización Del Club:</label>
               <img src="Imagenes/Fondo.jpg" class="img-responsive" alt="Cinque Terre" width="300" height="230" placeholder="Previsualización Del Estadio" class="form-control">
           </div>
           <div class="col">
