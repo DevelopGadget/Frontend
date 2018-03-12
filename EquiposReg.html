@@ -1,88 +1,111 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Equipos</title>
-  <link rel="stylesheet" href="Css/Style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="Css/StyleForm.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+  <link rel="stylesheet" href="Style.css" type="text/css">
 </head>
+
 <body>
-
-  <header>
-    <div calss="Ancho">
-        <div class="Logo">
-          <p> 
-            <a href="index.html">RegeTeam</a>
-          </p>
-        </div>
-        <nav>
-          <ul>
-            <li>
-              <a style="text-decoration:none" href="index.html">INICIO</a>
-            </li>
-          </ul>
-        </nav>
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">RegeTeam</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Inicio
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Equipos.html">Equipos</a>
+        </li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
-  <div id="particles-js">
-
-    <form class="needs-validation" novalidate method="POST">
-      <div class="row">
-        <div class="col">
-          <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
-          <input type="text" class="form-control" placeholder="Nombre Del Equipo" required>
-          <div class="invalid-feedback">
-              Ingresar Dato
-          </div>
+  <form class="needs-validation container" novalidate method="POST">
+    <br>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
+        <input type="text" class="form-control" placeholder="Nombre Del Equipo" required>
+        <div class="invalid-feedback">
+          Ingresar Dato
         </div>
-        <div class="col">
-          <label for="Nombre Del Equipo">Nombre Del Estadio:</label>
-          <input type="text" class="form-control" placeholder="Nombre Del Estadio" required>
-          <div class="invalid-feedback">
-              Ingresar Dato
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="Nombre Del Estadio">Nombre Del Estadio:</label>
+        <input type="text" class="form-control" placeholder="Nombre Del Estadio" required>
+        <div class="invalid-feedback">
+          Ingresar Dato
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="Url De Imagen Del Estadio">Url De Imagen Del Estadio:</label>
+        <input type="text" class="form-control" placeholder="Url De Imagen Del Estadio" required>
+        <div class="invalid-feedback">
+          Ingresar Dato
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="Url De Imagen Del Escudo">Url De Imagen Del Esucudo:</label>
+        <input type="text" class="form-control" placeholder="Url De Imagen Del Escudo" required>
+        <div class="invalid-feedback">
+          Ingresar Dato
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12 mb-3 text-center">
+        <button type="submit" class="btn btn-primary mb-2" id="submit">Enviar</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div class="row">
+          <br>
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Previzualización del escudo</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="card">
+              <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Previzualización del estadio</h5>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <label for="Url De Imagen Del Estadio">Url De Imagen Del Estadio:</label>
-          <input type="text" class="form-control" placeholder="Url De Imagen Del Estadio" required>
-          <div class="invalid-feedback">
-              Ingresar Dato
-          </div>
-        </div>
-        <div class="col">
-          <label for="Url De Imagen Del Escudo">Url De Imagen Del Esucudo:</label>
-          <input type="text" class="form-control" placeholder="Url De Imagen Del Escudo" required>
-          <div class="invalid-feedback">
-              Ingresar Dato
-          </div>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col">
-              <button type="submit" class="btn btn-primary mb-2" id="submit">Enviar</button>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col">
-              <label for="Previsualización Del Estadio">Previsualización Del Estadio:</label>
-              <img src="Imagenes/Fondo.jpg" class="img-responsive" alt="Cinque Terre" width="300" height="230" placeholder="Previsualización Del Estadio" class="form-control">
-          </div>
-          <div class="col">
-              <label for="Previsualización Del Esucdo">Previsualización Del Escudo:</label>
-              <img src="Imagenes/Fondo.jpg" class="img-responsive" alt="Cinque Terre" width="300" height="230" placeholder="Previsualización Del Escudo" class="form-control">
-          </div>
-        </div>
-    </form>
-  </div>
+    </div>
+  </form>
 
-  <script src="Js/Particulas/particles.js"></script>
-  <script src="Js/Particulas/demo/js/app.js"></script>
   <script src="Js/ValForm.js"></script>
 
 </body>
