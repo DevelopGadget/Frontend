@@ -15,3 +15,12 @@
     });
   }, false);
 })();
+var elm;
+function isValidURL(u){
+  if(!elm){
+    elm = document.createElement('input');
+    elm.setAttribute('type', 'url');
+  }
+  elm.value = u;
+  return elm.validity.valid;
+}
