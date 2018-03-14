@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="Jugadores">
 
 <head>
   <meta charset="utf-8" />
@@ -15,16 +15,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="Js/ControllerJs/ControllerJugadores.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
   <link rel="stylesheet" href="Style.css" type="text/css">
 </head>
 
-<body>
+<body ng-controller="Body">
 
   <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">RegeTeam</a>
+    <a class="navbar-brand" href="index.html">RegeTeam</a>
     <form class="form-inline col col-md-0">
-      <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search" ng-model="searchQuery">
     </form>
     <button class="navbar-toggler col col-md-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -47,24 +49,24 @@
   <div class="container">
     <div class="row">
       <br>
-      <div class="col-md-3">
+      <div class="col-sm-4" ng-repeat="Jugadores in Jugadores | filter:searchQuery">
         <div class="card">
-          <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+          <img class="img-responsive" src="{{Jugadores.uJugador}}" alt="Card image" height="345">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title">{{Jugadores.sNombre}}</h5>
+            <p class="card-text">
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Id: {{Jugadores.Id}}</li>
+                <li class="list-group-item list-group-item-success">Nacionalidad: {{Jugadores.sNacionalidad}}</li>
+                <li class="list-group-item list-group-item-success">Posición: {{Jugadores.sPosicion}}</li>
+                <li class="list-group-item list-group-item-success">Equipo: {{Jugadores.sEquipo.sNombre}}</li>
+                <li class="list-group-item list-group-item-success">Url De La Foto: {{Jugadores.uJugador}}</li>
+                <li class="list-group-item list-group-item-success">Url De La Nacionalidad: {{Jugadores.uNacionalidad}}</li>
+              </ul>
+            </p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="card">
-          <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+          <br>
         </div>
       </div>
     </div>
