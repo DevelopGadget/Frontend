@@ -24,7 +24,7 @@
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">RegeTeam</a>
     <form class="form-inline col col-md-0">
-      <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search" ng-model="searchQuery">
     </form>
     <button class="navbar-toggler col col-md-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -47,7 +47,7 @@
   <div class="container">
     <div class="row">
       <br>
-      <div class="col-sm-4" ng-repeat="Equipos in Equipos">
+      <div class="col-sm-4" ng-repeat="Equipos in Equipos | filter:searchQuery">
         <div class="card">
           <img class="img-responsive" src="{{Equipos.uEscudo}}" alt="Card image" height="345">
           <div class="card-body">
