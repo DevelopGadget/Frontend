@@ -1,3 +1,4 @@
+"use strict"
 (function() {
   'use strict';
   window.addEventListener('load', function() {
@@ -15,12 +16,3 @@
     });
   }, false);
 })();
-var elm;
-function isValidURL(u){
-  if(!elm){
-    elm = document.createElement('input');
-    elm.setAttribute('type', 'url');
-  }
-  elm.value = u;
-  return elm.validity.valid;
-}
