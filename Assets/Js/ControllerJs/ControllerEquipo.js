@@ -1,18 +1,11 @@
-angular.module("EquipoController", [])
-.controller("EquipoController", ["$scope", "$http", function (sp, http) {
-  sp.Equipos = [
-    {
-      sNombre : "",
-      sEquipo : "",
-      uEscudo : "",
-      uEstadio : ""
-    }
-  ];
-  http.get("https://api-net.herokuapp.com/api/Equipos")
+angular.module('EquipoController', [])
+.controller("EquipoController", function ($scope, $http) {
+  $scope.Equipos = [];
+  $http.get('https://api-net.herokuapp.com/api/Equipos')
     .then(function (data) {
-      sp.Equipos = data.data;
+      $scope.Equipos = data.data;
       console.log(data.data);
     }, function (err) {
-
+      
     });
-}]);
+});

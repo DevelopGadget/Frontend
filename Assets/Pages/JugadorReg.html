@@ -1,117 +1,112 @@
-<body>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#/">RegeTeam</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#!/">Inicio
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!/Jugadores">Jugadores</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-  <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">RegeTeam</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Inicio
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Jugadores.html">Jugadores</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <form class="needs-validation container" novalidate method="POST">
-    <br>
-    <div class="row">
-      <div class="col-md-4 mb-3">
-        <label for="Nombre Del Jugador">Nombre Del Jugador:</label>
-        <input type="text" class="form-control" placeholder="Nombre Del Jugador" required>
-        <div class="invalid-feedback">
-          Ingresar Dato
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="Edad">Edad:</label>
-        <input type="text" class="form-control" placeholder="Edad" required>
-        <div class="invalid-feedback">
-          Ingresar Dato
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <label for="Posición">Posición:</label>
-        <input type="text" class="form-control" placeholder="Posición" required>
-        <div class="invalid-feedback">
-          Ingresar Dato
-        </div>
+<form class="needs-validation container" novalidate method="POST">
+  <br>
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <label for="Nombre Del Jugador">Nombre Del Jugador:</label>
+      <input type="text" class="form-control" placeholder="Nombre Del Jugador" required>
+      <div class="invalid-feedback">
+        Ingresar Dato
       </div>
     </div>
-    <br>
-    <div class="row">
-      <div class="col-md-3 mb-3">
-        <label for="Nombre De La Nacionalidad">Nombre De La Nacionalidad:</label>
-        <input type="text" class="form-control" placeholder="Nombre De La Nacionalidad" required>
-        <div class="invalid-feedback">
-          Ingresar Dato
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="Url De Imagen Del Escudo De La Nacionalidad">Imagen De Selección (Url):</label>
-        <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo De La Nacionalidad" required>
-        <div class="invalid-feedback">
-          Debe ser una Url
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="Url De Imagen De La Persona">Imagen De La Persona(Url):</label>
-        <input type="url" class="form-control" placeholder="Url De Imagen De La Persona" required>
-        <div class="invalid-feedback">
-          Debe ser una Url
-        </div>
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
-        <select class="custom-select" required>
-          <option value="">Seleccione</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-        <div class="invalid-feedback">Seleccione un equipo</div>
+    <div class="col-md-4 mb-3">
+      <label for="Edad">Edad:</label>
+      <input type="text" class="form-control" placeholder="Edad" required>
+      <div class="invalid-feedback">
+        Ingresar Dato
       </div>
     </div>
-    <br>
-    <div class="row">
-      <div class="col-md-12 mb-3 text-center">
-        <button type="submit" class="btn btn-primary mb-2" id="submit">Enviar</button>
+    <div class="col-md-4 mb-3">
+      <label for="Posición">Posición:</label>
+      <input type="text" class="form-control" placeholder="Posición" required>
+      <div class="invalid-feedback">
+        Ingresar Dato
       </div>
     </div>
-    <div class="row">
-      <div class="container">
-        <div class="row">
-          <br>
-          <div class="col-md-4">
-            <div class="card">
-              <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Previzualización del jugador</h5>
-              </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-3 mb-3">
+      <label for="Nombre De La Nacionalidad">Nombre De La Nacionalidad:</label>
+      <input type="text" class="form-control" placeholder="Nombre De La Nacionalidad" required>
+      <div class="invalid-feedback">
+        Ingresar Dato
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="Url De Imagen Del Escudo De La Nacionalidad">Imagen De Selección (Url):</label>
+      <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo De La Nacionalidad" required>
+      <div class="invalid-feedback">
+        Debe ser una Url
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="Url De Imagen De La Persona">Imagen De La Persona(Url):</label>
+      <input type="url" class="form-control" placeholder="Url De Imagen De La Persona" required>
+      <div class="invalid-feedback">
+        Debe ser una Url
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
+      <select class="custom-select" required>
+        <option value="">Seleccione</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <div class="invalid-feedback">Seleccione un equipo</div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12 mb-3 text-center">
+      <button type="submit" class="btn btn-primary mb-2" id="submit">Enviar</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container">
+      <div class="row">
+        <br>
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Previzualización del jugador</h5>
             </div>
           </div>
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <div class="card">
-              <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Previzualización de la nacionalidad</h5>
-              </div>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Previzualización de la nacionalidad</h5>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
-
-  <script src="Js/ValForm.js"></script>
-
-</body>
+  </div>
+</form>
+<script src="Js/ValForm.js"></script>
 </html>

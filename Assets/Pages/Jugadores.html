@@ -1,51 +1,48 @@
-<body>
-
-  <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#/">RegeTeam</a>
-    <form class="form-inline col col-md-0">
-      <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search" ng-model="searchQuery">
-    </form>
-    <button class="navbar-toggler col col-md-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#/">Inicio
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#/JugadoresReg">Registrar</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <br>
-  <div class="container">
-    <div class="row">
-      <br>
-      <div class="col-sm-4" ng-repeat="Jugadores in Jugadores | filter:searchQuery">
-        <div class="card">
-          <img class="img-responsive" src="{{Jugadores.uJugador}}" alt="Card image" height="345">
-          <div class="card-body">
-            <h5 class="card-title">{{Jugadores.sNombre}}</h5>
-            <p class="card-text">
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Id: {{Jugadores.Id}}</li>
-                <li class="list-group-item list-group-item-success">Nacionalidad: {{Jugadores.sNacionalidad}}</li>
-                <li class="list-group-item list-group-item-success">Posición: {{Jugadores.sPosicion}}</li>
-                <li class="list-group-item list-group-item-success">Equipo: {{Jugadores.sEquipo.sNombre}}</li>
-                <li class="list-group-item list-group-item-success">Url De La Foto: {{Jugadores.uJugador}}</li>
-                <li class="list-group-item list-group-item-success">Url De La Nacionalidad: {{Jugadores.uNacionalidad}}</li>
-              </ul>
-            </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-          <br>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#/">RegeTeam</a>
+  <form class="form-inline col col-md-0">
+    <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search" ng-model="searchQuery">
+  </form>
+  <button class="navbar-toggler col col-md-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#!/">Inicio
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!/JugadoresReg">Registrar</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br>
+<div class="container">
+  <div class="row">
+    <br>
+    <div class="col-sm-4" ng-repeat="Jugadores in Jugadores | filter:searchQuery">
+      <div class="card">
+        <img class="img-responsive" ng-src="{{Jugadores.uJugador}}" alt="Card image" height="345">
+        <div class="card-body">
+          <h5 class="card-title">{{Jugadores.sNombre}}</h5>
+          <p class="card-text">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-success">Id: {{Jugadores.Id}}</li>
+              <li class="list-group-item list-group-item-success">Nacionalidad: {{Jugadores.sNacionalidad}}</li>
+              <li class="list-group-item list-group-item-success">Posición: {{Jugadores.sPosicion}}</li>
+              <li class="list-group-item list-group-item-success">Equipo: {{Jugadores.sEquipo.sNombre}}</li>
+              <li class="list-group-item list-group-item-success">Url De La Foto: {{Jugadores.uJugador}}</li>
+              <li class="list-group-item list-group-item-success">Url De La Nacionalidad: {{Jugadores.uNacionalidad}}</li>
+            </ul>
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
+        <br>
       </div>
     </div>
   </div>
-</body>
+</div>

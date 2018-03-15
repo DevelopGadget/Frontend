@@ -10,12 +10,12 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#/">Inicio
+        <a class="nav-link" href="#!/">Inicio
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#/EquiposReg">Registrar</a>
+        <a class="nav-link" href="#!/EquiposReg">Registrar</a>
       </li>
     </ul>
   </div>
@@ -24,9 +24,9 @@
 <div class="container">
   <div class="row">
     <br>
-    <div class="col-sm-4" ng-repeat="Equipos in Equipos | filter:searchQuery">
+    <div class="col-sm-4 w-100" ng-repeat="Equipos in Equipos | filter:searchQuery">
       <div class="card">
-        <img class="img-responsive" src="{{Equipos.uEscudo}}" alt="Card image" height="345">
+        <img class="img-responsive" ng-src="{{Equipos.uEscudo}}" alt="Card image" height="345">
         <div class="card-body">
           <h5 class="card-title">{{Equipos.sNombre}}</h5>
           <p class="card-text">

@@ -23,7 +23,7 @@ angular.module("appRoutes", ["ngRoute"])
       })
 
       .when('/JugadoresReg', {
-        templateUrl: '/pages/JugadoresReg.html',
+        templateUrl: '/pages/JugadorReg.html',
         controller: 'JugadoresController'
       })
 
