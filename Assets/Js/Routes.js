@@ -1,15 +1,15 @@
 "use strict"
-var modul = angular.module("App", ["ngRoute"])
+angular.module("appRoutes", ["ngRoute"])
   .config(function ($routeProvider, $locationProvider) {
     console.log('routeando');
     $routeProvider.when('/', {
         templateUrl: '/pages/index.html',
-        controller: 'IndexController'
+        controller: 'IndexController as IndexController'
       })
 
       .when('/Equipos', {
         templateUrl: '/pages/Equipos.html',
-        controller: 'EquipoController'
+        controller: 'EquipoController as EquipoController'
       })
 
       .when('/EquiposReg', {
