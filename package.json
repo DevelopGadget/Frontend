@@ -1,17 +1,26 @@
 {
-  "name": "frontend",
+  "name": "Pagina-Web-Api",
   "version": "1.0.0",
   "description": "",
   "main": "Server.js",
   "scripts": {
     "start": "nodemon Server.js"
   },
-  "author": "FernanPro18",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FernanPro18/Pagina-Web-Api.git"
+  },
+  "keywords": [],
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FernanPro18/Pagina-Web-Api/issues"
+  },
+  "homepage": "https://github.com/FernanPro18/Pagina-Web-Api#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.3"
   },
   "devDependencies": {
-    "nodemon": "^1.14.9"
+    "nodemon": "^1.17.2"
   }
 }
