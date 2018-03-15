@@ -1,5 +1,5 @@
-"use strict"
-angular.module("App", [])
+(function(){
+  "use strict"
   .controller("JugadoresController", ["$scope", "$http", function (sp, http) {
     sp.Jugadores = [];
     http.get("https://api-net.herokuapp.com/api/Jugadores")
@@ -9,3 +9,4 @@ angular.module("App", [])
 
       });
   }]);
+});
