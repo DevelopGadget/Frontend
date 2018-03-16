@@ -2,7 +2,7 @@
 angular.module("appRoutes", ["ngRoute"])
   .config(function ($routeProvider, $locationProvider) {
     console.log('routeando');
-    $routeProvider.when('/', {
+    $routeProvider.when('/Home', {
         templateUrl: '/pages/index.html',
         controller: 'IndexController'
       })
@@ -38,7 +38,7 @@ angular.module("appRoutes", ["ngRoute"])
       })
 
       .otherwise({
-        redirectTO: '/'
+        redirectTO: '/Home'
       });
 
     $locationProvider.html5Mode({

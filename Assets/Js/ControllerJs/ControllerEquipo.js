@@ -34,6 +34,14 @@ angular.module('EquipoController', ['ngResource'])
       });
     };
 
+    Equipos.get = function (id) {
+      return Equipos.Res.get({id: id}, function (data) {
+        console.log(data);
+      }, function (error) {
+
+      });
+    };
+
     Equipos.Post = function (data, scope) {
       Equipos.Res.save({
         notify: true
@@ -70,18 +78,20 @@ angular.module('EquipoController', ['ngResource'])
   })
 
   .controller("EquipoController", function ($scope, Equipos, $routeParams) {
+  
     $scope.mostrar = false;
     $scope.Equipos = Equipos.getAll();
     $scope.mostrar = true;
     $scope.Array = {};
+    if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
+      $scope.select = Equipos.get(String($routeParams.id));
+      $('#select').modal('show')
+    }
+
     $scope.Post = function () {
       if ($scope.form.$valid) {
         console.log($scope.Array);
         Equipos.Post($scope.Array, $scope);
       }
-    }
-    $scope.Get = function (equipo) {
-      $scope.select = equipo;
-      $('#select').modal('show')
     }
   });

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand" href="#!/">RegeTeam</a>
+  <a class="navbar-brand" ng-href="#!/Home">RegeTeam</a>
   <form class="form-inline col col-md-0">
     <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search" ng-model="searchQuery">
   </form>
@@ -10,12 +10,12 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#!/">Inicio
+        <a class="nav-link" ng-href="#!/Home">Inicio
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#!/EquiposReg">Registrar</a>
+        <a class="nav-link" ng-href="#!/EquiposReg">Registrar</a>
       </li>
     </ul>
   </div>
@@ -25,7 +25,7 @@
 <div class="container animate-bottom" ng-show="mostrar">
   <div class="row">
     <br>
-    <div class="col-sm-4 w-100" ng-repeat="Equipos in Equipos | filter:searchQuery">
+    <div class="col-sm-4" ng-repeat="Equipos in Equipos | filter:searchQuery">
       <div class="card">
         <img class="img-responsive" ng-src="{{Equipos.uEscudo}}" alt="Card image" height="345">
         <div class="card-body">
@@ -34,14 +34,12 @@
             <ul class="list-group">
               <li class="list-group-item list-group-item-success">Id: {{Equipos.Id}}</li>
               <li class="list-group-item list-group-item-success">Nombre Del Estadio: {{Equipos.sEstadio}}</li>
-              <li class="list-group-item list-group-item-success">Url Del Estadio: {{Equipos.uEstadio}}</li>
-              <li class="list-group-item list-group-item-success">Url Del Escudo: {{Equipos.uEscudo}}</li>
             </ul>
           </p>
-          <a ng-click="Get(Equipos)" class="btn btn-primary">Ir</a>
         </div>
-        <br>
+        <a class="btn btn-primary" ng-href="#!/Equipos/{{Equipos.Id}}">Ir</a>
       </div>
+      <br>
     </div>
   </div>
 </div>
@@ -49,7 +47,7 @@
 <div class="container">
   <!-- Central Modal Medium Info -->
   <div class="modal fade" id="select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-notify modal-info" role="document">
+    <div class="modal-dialog modal-notify modal-info modal-lg" role="document">
       <!--Content-->
       <div class="modal-content">
         <!--Header-->
@@ -70,18 +68,51 @@
               <div ng-show="!select.sNombre && form.$submitted" class="alert alert-warning">
                 Ingresar Dato
               </div>
+              <label for="Nombre Del Estadio">Nombre Del Estadio:</label>
+              <input type="text" class="form-control" placeholder="Nombre Del Estadio" required ng-model="select.sEstadio">
+              <div ng-show="!select.sEstadio && form.$submitted" class="alert alert-warning">
+                Ingresar Dato
+              </div>
+              <label for="Url De Imagen Del Estadio">Imagen Del Estadio(Url):</label>
+              <input type="url" class="form-control" placeholder="Url De Imagen Del Estadio" required ng-model="select.uEstadio">
+              <div ng-show="!select.uEstadio && form.$submitted" class="alert alert-warning">
+                Debe Ser Una Url
+              </div>
+              <label for="Url De Imagen Del Escudo">Imagen Del Esucudo (Url):</label>
+              <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo" required ng-model="select.uEscudo">
+              <div ng-show="!select.uEscudo && form.$submitted" class="alert alert-warning">
+                Debe Ser Una Url
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card">
+                    <img class="img-responsive" ng-src="{{select.uEscudo}}" alt="Card image" height="250">
+                    <div class="card-body">
+                      <h5 class="card-title">Previzualización del escudo</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                    <img class="img-responsive" ng-src="{{select.uEstadio}}" alt="Card image" height="250">
+                    <div class="card-body">
+                      <h5 class="card-title">Previzualización del estadio</h5>
+                    </div>
+                  </div>
+                </div>
             </form>
+            </div>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer justify-content-center">
+            <a type="button" class="btn btn-primary">Editar</a>
+            <a type="button" class="btn btn-danger">Eliminar</a>
           </div>
         </div>
-        <!--Footer-->
-        <div class="modal-footer justify-content-center">
-          <a type="button" class="btn btn-primary">Editar</a>
-          <a type="button" class="btn btn-danger">Eliminar</a>
-        </div>
+        <!--/.Content-->
       </div>
-      <!--/.Content-->
     </div>
-  </div>
-  <!-- Central Modal Medium Info-->
+    <!-- Central Modal Medium Info-->
 
-</div>
+  </div>
