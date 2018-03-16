@@ -20,8 +20,9 @@
     </ul>
   </div>
 </nav>
+<div id="loader" ng-show="!mostrar"></div>
 <br>
-<div class="container">
+<div class="container animate-bottom" ng-show="mostrar">
   <div class="row">
     <br>
     <div class="col-sm-4 w-100" ng-repeat="Equipos in Equipos | filter:searchQuery">
@@ -37,10 +38,50 @@
               <li class="list-group-item list-group-item-success">Url Del Escudo: {{Equipos.uEscudo}}</li>
             </ul>
           </p>
-          <a ng-click="Get(Equipos.Id)" class="btn btn-primary">Ir</a>
+          <a ng-click="Get(Equipos)" class="btn btn-primary">Ir</a>
         </div>
         <br>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <!-- Central Modal Medium Info -->
+  <div class="modal fade" id="select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading lead">{{select.sNombre}}</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+        <!--Body-->
+        <div class="modal-body">
+          <div class="text-center">
+            <img class="img-responsive" ng-src="{{select.uEscudo}}" alt="Card image" height="120">
+            <!-- Material input -->
+            <form class="container" id="form" novalidate method="POST" ng-submit="Post()" name="form">
+              <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
+              <input type="text" class="form-control" placeholder="Nombre Del Equipo" required ng-model="select.sNombre">
+              <div ng-show="!select.sNombre && form.$submitted" class="alert alert-warning">
+                Ingresar Dato
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+          <a type="button" class="btn btn-primary">Editar</a>
+          <a type="button" class="btn btn-danger">Eliminar</a>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!-- Central Modal Medium Info-->
+
 </div>

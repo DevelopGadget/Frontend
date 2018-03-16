@@ -44,14 +44,14 @@ angular.module('EquipoController', ['ngResource'])
             classBtn: 'btn btn-success',
             classDiv: 'modal-dialog modal-notify modal-success',
             Texto: 'Se Ha Registrado Satisfactoriamente',
-            Link : '#!/Equipos'
+            Link: '#!/Equipos'
           };
         } else {
           scope.Modal = {
             classBtn: 'btn btn-danger',
             classDiv: 'modal-dialog modal-notify modal-danger',
             Texto: 'Ha Ocurrido Un Error Verifique Los Datos Ingresados',
-            Link : '#!/EquiposReg'
+            Link: '#!/EquiposReg'
           };
         }
       }, function (error) {
@@ -60,7 +60,7 @@ angular.module('EquipoController', ['ngResource'])
           classBtn: 'btn btn-danger',
           classDiv: 'modal-dialog modal-notify modal-danger',
           Texto: 'Ha Ocurrido Un Error Vuelva A Intentar',
-          Link : '#!/EquiposReg'
+          Link: '#!/EquiposReg'
         };
       });
       $('#Modal').modal('show')
@@ -70,7 +70,9 @@ angular.module('EquipoController', ['ngResource'])
   })
 
   .controller("EquipoController", function ($scope, Equipos, $routeParams) {
+    $scope.mostrar = false;
     $scope.Equipos = Equipos.getAll();
+    $scope.mostrar = true;
     $scope.Array = {};
     $scope.Post = function () {
       if ($scope.form.$valid) {
@@ -78,7 +80,8 @@ angular.module('EquipoController', ['ngResource'])
         Equipos.Post($scope.Array, $scope);
       }
     }
-    $scope.Get = function(id){
-        console.log(id);
+    $scope.Get = function (equipo) {
+      $scope.select = equipo;
+      $('#select').modal('show')
     }
   });
