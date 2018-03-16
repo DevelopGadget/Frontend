@@ -1,36 +1,34 @@
 angular.module('EquipoController', ['ngResource'])
 
-  .factory('peticion', function ($resource) {
-    var peticion = {};
-    peticion.Res = $resource('https://api-net.herokuapp.com/api/Equipos/:id', {
+  .factory('Equipos', function ($resource) {
+    var Equipos = {};
+    Equipos.Res = $resource('https://api-net.herokuapp.com/api/Equipos/:id', {
       id: "@id"
     });
-    console.log("hola");
-    peticion.getAll = function () {
-      return peticion.Res.query(function (data) {
+    Equipos.getAll = function () {
+      return Equipos.Res.query(function (data) {
         console.log(data);
       });
     };
 
-    peticion.Post = function (data) {
-      if (data !== {} || data !== null) {
-        peticion.Res.save({
-          data: data
-        }, function (resp) {
-          return data;
-          console.log(data);
-        });
-      }
+    Equipos.Post = function (data) {
+      Equipos.Res.save({
+        data: data
+      }, function (resp) {
+        return data;
+        console.log(data);
+      });
     }
 
-    return peticion;
+    return Equipos;
   })
 
-  .controller("EquipoController", function ($scope, peticion) {
-    $scope.Equipos = peticion.getAll();
-
+  .controller("EquipoController", function ($scope, Equipos) {
+    $scope.Equipos = Equipos.getAll();
+    $scope.Post = {};
     $scope.Post = function () {
-      $scope.Post = {};
-      peticion.Post();
+      console.log("hola");
+      Equipos.Post();
     }
   });
+  

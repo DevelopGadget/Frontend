@@ -1,30 +1,33 @@
 angular.module('JugadoresController', [])
 
-  .factory('peticion', function ($resource) {
-    var peticion = {};
-    peticion.Res = $resource('https://api-net.herokuapp.com/api/Jugadores/:id', {
+  .factory('Jugadores', function ($resource) {
+    var Jugadores = {};
+    Jugadores.Res = $resource('https://api-net.herokuapp.com/api/Jugadores/:id', {
       id: "@id"
     });
-    
-    peticion.getAll = function () {
-      return peticion.Res.query(function (data) {
+
+    Jugadores.getAll = function () {
+      return Jugadores.Res.query(function (data) {
         console.log(data);
       });
     };
 
-    peticion.Post = function (data) {
-      return peticion.Res.save({
+    Jugadores.Post = function (data) {
+      return Jugadores.Res.save({
         data: data
       }, function (resp) {
         console.log(data);
       });
     }
-    return peticion;
+    return Jugadores;
   })
-  .controller('JugadoresController', function ($scope, peticion) {
-    $scope.Jugadores = peticion.getAll();
 
+  .controller('JugadoresController', function ($scope, Jugadores) {
+    $scope.Jugadores = Jugadores.getAll();
     $scope.Post = function () {
-
+      $scope.Post = {};
+      if($scope.form.$valid){
+        Jugadores.Post(Post);
+      }
     }
   });

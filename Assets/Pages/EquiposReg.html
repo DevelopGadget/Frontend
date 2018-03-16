@@ -19,21 +19,21 @@
     </div>
   </nav>
 
-  <form class="needs-validation container" novalidate method="POST" ng-submit="Post()">
+  <form class="container" id="form" novalidate method="POST" ng-submit="Post()" name="form">
     <br>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
         <input type="text" class="form-control" placeholder="Nombre Del Equipo" required ng-model="Post.sNombre">
-        <div class="invalid-feedback">
+        <div ng-show="!Post.sNombre && form.$submitted" class="alert alert-warning">
           Ingresar Dato
         </div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="Nombre Del Estadio">Nombre Del Estadio:</label>
         <input type="text" class="form-control" placeholder="Nombre Del Estadio" required ng-model="Post.sEstadio">
-        <div class="invalid-feedback">
+        <div ng-show="!Post.sEstadio && form.$submitted" class="alert alert-warning">
           Ingresar Dato
         </div>
       </div>
@@ -43,14 +43,14 @@
       <div class="col-md-6 mb-3">
         <label for="Url De Imagen Del Estadio">Imagen Del Estadio(Url):</label>
         <input type="url" class="form-control" placeholder="Url De Imagen Del Estadio" required ng-model="Post.uEstadio">
-        <div class="invalid-feedback">
+        <div ng-show="!Post.uEstadio && form.$submitted" class="alert alert-warning">
           Debe Ser Una Url
         </div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="Url De Imagen Del Escudo">Imagen Del Esucudo (Url):</label>
         <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo" required ng-model="Post.uEscudo">
-        <div class="invalid-feedback">
+        <div ng-show="!Post.uEscudo && form.$submitted" class="alert alert-warning">
           Debe Ser Una Url
         </div>
       </div>
@@ -67,7 +67,7 @@
           <br>
           <div class="col-md-4">
             <div class="card">
-              <img class="card-img-top" ng-src="{{Post.uEscudo}}" alt="Card image cap">
+              <img class="img-responsive" ng-src="{{Post.uEscudo}}" alt="Card image" height="345">
               <div class="card-body">
                 <h5 class="card-title">Previzualización del escudo</h5>
               </div>
@@ -76,7 +76,7 @@
           <div class="col-md-4"></div>
           <div class="col-md-4">
             <div class="card">
-              <img class="card-img-top" ng-src="{{Post.uEstadio}} alt="Card image cap">
+              <img class="img-responsive" ng-src="{{Post.uEstadio}}" alt="Card image" height="345">
               <div class="card-body">
                 <h5 class="card-title">Previzualización del estadio</h5>
               </div>
@@ -86,5 +86,4 @@
       </div>
     </div>
   </form>
-  <script src="Js/ValForm.js"></script>
 </body>
