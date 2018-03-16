@@ -4,12 +4,12 @@ angular.module("appRoutes", ["ngRoute"])
     console.log('routeando');
     $routeProvider.when('/', {
         templateUrl: '/pages/index.html',
-        controller: 'IndexController as IndexController'
+        controller: 'IndexController'
       })
 
       .when('/Equipos', {
         templateUrl: '/pages/Equipos.html',
-        controller: 'EquipoController as EquipoController'
+        controller: 'EquipoController'
       })
 
       .when('/EquiposReg', {

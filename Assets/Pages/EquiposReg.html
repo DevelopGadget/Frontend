@@ -1,6 +1,6 @@
 <body>
   <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">RegeTeam</a>
+    <a class="navbar-brand" href="#!/">RegeTeam</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
       aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -19,20 +19,20 @@
     </div>
   </nav>
 
-  <form class="needs-validation container" novalidate method="POST">
+  <form class="needs-validation container" novalidate method="POST" ng-submit="Post()">
     <br>
     </div>
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
-        <input type="text" class="form-control" placeholder="Nombre Del Equipo" required>
+        <input type="text" class="form-control" placeholder="Nombre Del Equipo" required ng-model="Post.sNombre">
         <div class="invalid-feedback">
           Ingresar Dato
         </div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="Nombre Del Estadio">Nombre Del Estadio:</label>
-        <input type="text" class="form-control" placeholder="Nombre Del Estadio" required>
+        <input type="text" class="form-control" placeholder="Nombre Del Estadio" required ng-model="Post.sEstadio">
         <div class="invalid-feedback">
           Ingresar Dato
         </div>
@@ -42,14 +42,14 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="Url De Imagen Del Estadio">Imagen Del Estadio(Url):</label>
-        <input type="url" class="form-control" placeholder="Url De Imagen Del Estadio" required>
+        <input type="url" class="form-control" placeholder="Url De Imagen Del Estadio" required ng-model="Post.uEstadio">
         <div class="invalid-feedback">
           Debe Ser Una Url
         </div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="Url De Imagen Del Escudo">Imagen Del Esucudo (Url):</label>
-        <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo" required>
+        <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo" required ng-model="Post.uEscudo">
         <div class="invalid-feedback">
           Debe Ser Una Url
         </div>
@@ -67,7 +67,7 @@
           <br>
           <div class="col-md-4">
             <div class="card">
-              <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+              <img class="card-img-top" ng-src="{{Post.uEscudo}}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Previzualización del escudo</h5>
               </div>
@@ -76,7 +76,7 @@
           <div class="col-md-4"></div>
           <div class="col-md-4">
             <div class="card">
-              <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+              <img class="card-img-top" ng-src="{{Post.uEstadio}} alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">Previzualización del estadio</h5>
               </div>
