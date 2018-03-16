@@ -69,7 +69,7 @@ angular.module('EquipoController', ['ngResource'])
     return Equipos;
   })
 
-  .controller("EquipoController", function ($scope, Equipos) {
+  .controller("EquipoController", function ($scope, Equipos, $routeParams) {
     $scope.Equipos = Equipos.getAll();
     $scope.Array = {};
     $scope.Post = function () {
@@ -77,5 +77,8 @@ angular.module('EquipoController', ['ngResource'])
         console.log($scope.Array);
         Equipos.Post($scope.Array, $scope);
       }
+    }
+    $scope.Get = function(id){
+        console.log(id);
     }
   });

@@ -12,12 +12,22 @@ angular.module("appRoutes", ["ngRoute"])
         controller: 'EquipoController'
       })
 
+      .when('/Equipos/:id', {
+        templateUrl: '/pages/Equipos.html',
+        controller: 'EquipoController'
+      })
+
       .when('/EquiposReg', {
         templateUrl: '/pages/EquiposReg.html',
         controller: 'EquipoController'
       })
 
       .when('/Jugadores', {
+        templateUrl: '/pages/Jugadores.html',
+        controller: 'JugadoresController'
+      })
+
+      .when('/Jugadores/:id', {
         templateUrl: '/pages/Jugadores.html',
         controller: 'JugadoresController'
       })
