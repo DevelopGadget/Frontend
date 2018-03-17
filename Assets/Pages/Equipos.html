@@ -22,27 +22,28 @@
 </nav>
 <div id="loader" ng-show="!mostrar"></div>
 <br>
-  <div class="container animate-bottom" ng-show="mostrar">
-    <div class="row">
-      <br>
-      <div class="col-xl-4" ng-repeat="Equipos in Equipos | filter:searchQuery">
-        <div class="card" style="height: 750px;">
-          <img class="img-responsive" ng-src="{{Equipos.uEscudo}}" alt="Card image" height="345">
-          <div class="card-body">
-            <h5 class="card-title">{{Equipos.sNombre}}</h5>
-            <p class="card-text mw-100 mh-100">
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Id: {{Equipos.Id}}</li>
-                <li class="list-group-item list-group-item-success">Nombre Del Estadio: {{Equipos.sEstadio}}</li>
-              </ul>
-            </p>
-          </div>
-          <a class="btn btn-primary" ng-href="#!/Equipos/{{Equipos.Id}}">Ir</a>
+<div class="container animate-bottom" ng-show="mostrar">
+  <div class="row">
+    <br>
+    <div class="col-xl-4" ng-repeat="Equipos in Equipos | filter:searchQuery">
+      <div class="card" style="height: 750px;">
+        <img class="img-responsive" ng-src="{{Equipos.uEscudo}}" alt="Card image" height="345">
+        <div class="card-body">
+          <h5 class="card-title">{{Equipos.sNombre}}</h5>
+          <p class="card-text mw-100 mh-100">
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-success">Id: {{Equipos.Id}}</li>
+              <li class="list-group-item list-group-item-success">Nombre Del Estadio: {{Equipos.sEstadio}}</li>
+            </ul>
+          </p>
         </div>
-        <br>
+        <a class="btn btn-primary" ng-href="#!/Equipos/{{Equipos.Id}}">Ir</a>
       </div>
+      <br>
     </div>
   </div>
+</div>
+
 
 <div class="container">
   <!-- Central Modal Medium Info -->
@@ -52,7 +53,7 @@
       <div class="modal-content">
         <!--Header-->
         <div class="modal-header">
-          <p class="heading lead">{{select.sNombre}}</p>
+          <p class="heading lead">{{copia.sNombre}}</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" class="white-text">&times;</span>
           </button>
@@ -60,27 +61,27 @@
         <!--Body-->
         <div class="modal-body">
           <div class="text-center">
-            <img class="img-responsive" ng-src="{{select.uEscudo}}" alt="Card image" height="120">
+            <img class="img-responsive" ng-src="{{copia.uEscudo}}" alt="Card image" height="120">
             <!-- Material input -->
-            <form class="container" id="form" novalidate method="POST" ng-submit="Post()" name="form">
+            <form class="container" id="form" novalidate method="POST" ng-submit="Update(select.Id, select)" name="form">
               <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
               <input type="text" class="form-control" placeholder="Nombre Del Equipo" required ng-model="select.sNombre">
-              <div ng-show="!select.sNombre && form.$submitted" class="alert alert-warning">
+              <div ng-show="!select.sNombre && form.$submitted" class="alert alert-danger">
                 Ingresar Dato
               </div>
               <label for="Nombre Del Estadio">Nombre Del Estadio:</label>
               <input type="text" class="form-control" placeholder="Nombre Del Estadio" required ng-model="select.sEstadio">
-              <div ng-show="!select.sEstadio && form.$submitted" class="alert alert-warning">
+              <div ng-show="!select.sEstadio && form.$submitted" class="alert alert-danger">
                 Ingresar Dato
               </div>
               <label for="Url De Imagen Del Estadio">Imagen Del Estadio(Url):</label>
               <input type="url" class="form-control" placeholder="Url De Imagen Del Estadio" required ng-model="select.uEstadio">
-              <div ng-show="!select.uEstadio && form.$submitted" class="alert alert-warning">
+              <div ng-show="!select.uEstadio && form.$submitted" class="alert alert-danger">
                 Debe Ser Una Url
               </div>
               <label for="Url De Imagen Del Escudo">Imagen Del Esucudo (Url):</label>
               <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo" required ng-model="select.uEscudo">
-              <div ng-show="!select.uEscudo && form.$submitted" class="alert alert-warning">
+              <div ng-show="!select.uEscudo && form.$submitted" class="alert alert-danger">
                 Debe Ser Una Url
               </div>
               <br>
@@ -101,39 +102,41 @@
                     </div>
                   </div>
                 </div>
+                <!--Footer-->
+                <div class="modal-footer justify-content-center text-center">
+                  <button type="submit" class="btn btn-info pull-righ" id="submit">Editar</button>
+                  <button class="btn btn-danger pull-righ" ng-click="Delete(select.Id)">Eliminar</a>
+                </div>
             </form>
             </div>
-          </div>
-          <!--Footer-->
-          <div class="modal-footer justify-content-center">
-            <a type="button" class="btn btn-primary">Editar</a>
-            <a type="button" class="btn btn-danger" ng-click="Eliminar(select.Id)">Eliminar</a>
           </div>
         </div>
         <!--/.Content-->
       </div>
     </div>
     <!-- Central Modal Medium Info-->
-    
-  <!-- Central Modal Medium Success -->
-  <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="{{Modal.classDiv}}" role="document">
+
+    <!-- Central Modal Medium Success -->
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="{{Modal.classDiv}}" role="document">
         <!--Content-->
         <div class="modal-content">
-            <!--Header-->
-            <div class="modal-header">
-                <p class="heading lead">{{Modal.Texto}}</p>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="white-text">&times;</span>
-                </button>
-            </div>
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-                <a type="button" class="{{Modal.classBtn}}" ng-href="{{Modal.Link}}">Continuar<i class="fa fa-diamond ml-1"></i></a>
-            </div>
+          <!--Header-->
+          <div class="modal-header">
+            <p class="heading lead">{{Modal.Texto}}</p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="white-text">&times;</span>
+            </button>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer justify-content-center">
+            <a type="button" class="{{Modal.classBtn}}" ng-href="{{Modal.Link}}">Continuar
+              <i class="fa fa-diamond ml-1"></i>
+            </a>
+          </div>
         </div>
         <!--/.Content-->
+      </div>
     </div>
-    </div>
-    <!-- Central Modal Medium Success--> 
+    <!-- Central Modal Medium Success-->
   </div>

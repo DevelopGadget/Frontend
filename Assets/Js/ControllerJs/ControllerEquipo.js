@@ -26,7 +26,7 @@ angular.module('EquipoController', ['ngResource'])
         }
       });
 
-    Equipos.getAll = function (scope) {
+    Equipos.ReadAll = function (scope) {
       return Equipos.Res.query(function (data) {
         console.log(data);
         scope.mostrar = true;
@@ -35,7 +35,7 @@ angular.module('EquipoController', ['ngResource'])
       });
     };
 
-    Equipos.get = function (id) {
+    Equipos.Read = function (id) {
       return Equipos.Res.get({
         id: id
       }, function (data) {
@@ -45,19 +45,19 @@ angular.module('EquipoController', ['ngResource'])
       });
     };
 
-    Equipos.Post = function (data, scope) {
+    Equipos.Create = function (data, scope) {
       Equipos.Res.save({
         notify: true
       }, data, function (resp) {
         console.log(resp);
         if (resp.statusCode == 200) {
-          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Registrado Satisfactoriamente', '#!/Equipos')
+          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Registrado Satisfactoriamente', '#!/Equipos', $scope);
         } else {
-          Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Verifique Los Datos Ingresados', '#!/Equipos');
+          Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Verifique Los Datos Ingresados', '#!/Equipos', $scope);
         }
       }, function (error) {
         console.log(error);
-        Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos');
+        Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', $scope);
       });
       $('#Modal').modal('show')
     }
@@ -68,17 +68,30 @@ angular.module('EquipoController', ['ngResource'])
       }, function (resp) {
         console.log(resp);
         if (resp.statusCode == 200) {
-          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Eliminado Satisfactoriamente', '#!/Equipos');
+          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Eliminado Satisfactoriamente', '#!/Equipos', $scope);
         } else {
-          Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos');
+          Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', $scope);
         }
       }, function (error) {
-        Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos');
+        Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', $scope);
       });
       $('#Modal').modal('show')
     }
 
-    Equipos.Modal = function (classBtn, classDiv, Texto, Link) {
+    Equipos.Update = function (id, data, scope) {
+        Equipos.Res.put({id : id}, {data : data}, function(resp){
+          console.log(resp);
+          if (resp.statusCode == 200) {
+            Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Modificado Satisfactoriamente', '#!/Equipos', $scope);
+          }else{
+            Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', $scope);
+          }
+        },function(error){
+          Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', $scope);
+        });
+    }
+
+    Equipos.Modal = function (classBtn, classDiv, Texto, Link, scope) {
       scope.Modal = {
         classBtn: classBtn,
         classDiv: classDiv,
@@ -93,11 +106,13 @@ angular.module('EquipoController', ['ngResource'])
   .controller("EquipoController", function ($scope, Equipos, $routeParams, $window) {
 
     $scope.mostrar = false;
-    $scope.Equipos = Equipos.getAll($scope);
+    $scope.Equipos = Equipos.ReadAll($scope);
     $scope.Array = {};
 
     if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
-      $scope.select = Equipos.get(String($routeParams.id));
+      $scope.select = Equipos.Read(String($routeParams.id));
+      $scope.copia = angular.copy($scope.select);
+      console.log(angular.copy($scope.select));
       $('#select').modal('show')
     }
 
@@ -105,23 +120,26 @@ angular.module('EquipoController', ['ngResource'])
       $window.location.href = "#!/Equipos";
     });
 
-    $scope.Post = function () {
+    $scope.Create = function () {
       if ($scope.form.$valid) {
         console.log($scope.Array);
-        Equipos.Post($scope.Array, $scope);
+        Equipos.Create($scope.Array, $scope);
       }
     }
 
-    $scope.Eliminar = function (id) {
+    $scope.Delete = function (id) {
       if (id !== '' && id !== null) {
         $scope.select = {};
         Equipos.Remove(id, $scope);
-        scope.Modal = {
-          classBtn: 'btn btn-success',
-          classDiv: 'modal-dialog modal-notify modal-success',
-          Texto: 'Se Ha Eliminado Satisfactoriamente',
-          Link: '#!/Equipos'
-        };
+      }
+    }
+
+    $scope.Update = function (id, data){
+      if(id !== '' &&  id !== null && $scope.form.$valid){
+        console.log("hola");
+        Equipos.Update(id, data, $scope);
+        $scope.select = {};
+        $scope.copia = {};
       }
     }
 
