@@ -63,32 +63,32 @@
           <div class="text-center">
             <img class="img-responsive" ng-src="{{copia.uEscudo}}" alt="Card image" height="120">
             <!-- Material input -->
-            <form class="container" id="form" novalidate method="POST" ng-submit="Update(select.Id, select)" name="form">
+            <form class="container" id="form" novalidate method="POST" ng-submit="Update(copia.Id, Equipo)" name="form">
               <label for="Nombre Del Equipo">Nombre Del Equipo:</label>
-              <input type="text" class="form-control" placeholder="Nombre Del Equipo" required ng-model="select.sNombre">
-              <div ng-show="!select.sNombre && form.$submitted" class="alert alert-danger">
+              <input type="text" class="form-control" placeholder="Nombre Del Equipo" required ng-model="Equipo.sNombre">
+              <div ng-show="!Equipo.sNombre && form.$submitted" class="alert alert-danger">
                 Ingresar Dato
               </div>
               <label for="Nombre Del Estadio">Nombre Del Estadio:</label>
-              <input type="text" class="form-control" placeholder="Nombre Del Estadio" required ng-model="select.sEstadio">
-              <div ng-show="!select.sEstadio && form.$submitted" class="alert alert-danger">
+              <input type="text" class="form-control" placeholder="Nombre Del Estadio" required ng-model="Equipo.sEstadio">
+              <div ng-show="!Equipo.sEstadio && form.$submitted" class="alert alert-danger">
                 Ingresar Dato
               </div>
               <label for="Url De Imagen Del Estadio">Imagen Del Estadio(Url):</label>
-              <input type="url" class="form-control" placeholder="Url De Imagen Del Estadio" required ng-model="select.uEstadio">
-              <div ng-show="!select.uEstadio && form.$submitted" class="alert alert-danger">
+              <input type="url" class="form-control" placeholder="Url De Imagen Del Estadio" required ng-model="Equipo.uEstadio">
+              <div ng-show="!Equipo.uEstadio && form.$submitted" class="alert alert-danger">
                 Debe Ser Una Url
               </div>
               <label for="Url De Imagen Del Escudo">Imagen Del Esucudo (Url):</label>
-              <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo" required ng-model="select.uEscudo">
-              <div ng-show="!select.uEscudo && form.$submitted" class="alert alert-danger">
+              <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo" required ng-model="Equipo.uEscudo">
+              <div ng-show="!Equipo.uEscudo && form.$submitted" class="alert alert-danger">
                 Debe Ser Una Url
               </div>
               <br>
               <div class="row">
                 <div class="col-md-6">
                   <div class="card">
-                    <img class="img-responsive" ng-src="{{select.uEscudo}}" alt="Card image" height="250">
+                    <img class="img-responsive" ng-src="{{Equipo.uEscudo}}" alt="Card image" height="250">
                     <div class="card-body">
                       <h5 class="card-title">Previzualización del escudo</h5>
                     </div>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="card">
-                    <img class="img-responsive" ng-src="{{select.uEstadio}}" alt="Card image" height="250">
+                    <img class="img-responsive" ng-src="{{Equipo.uEstadio}}" alt="Card image" height="250">
                     <div class="card-body">
                       <h5 class="card-title">Previzualización del estadio</h5>
                     </div>
@@ -105,7 +105,7 @@
                 <!--Footer-->
                 <div class="modal-footer justify-content-center text-center">
                   <button type="submit" class="btn btn-info pull-righ" id="submit">Editar</button>
-                  <button class="btn btn-danger pull-righ" ng-click="Delete(select.Id)">Eliminar</a>
+                  <button class="btn btn-danger pull-righ" ng-click="Delete(Equipo.Id)">Eliminar</a>
                 </div>
             </form>
             </div>

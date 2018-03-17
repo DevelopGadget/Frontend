@@ -1,7 +1,7 @@
 "use strict"
 angular.module("appRoutes", ["ngRoute"])
   .config(function ($routeProvider, $locationProvider) {
-    console.log('routeando');
+    
     $routeProvider.when('/Home', {
         templateUrl: '/pages/index.html',
         controller: 'IndexController'
