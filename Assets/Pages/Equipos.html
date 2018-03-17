@@ -22,27 +22,27 @@
 </nav>
 <div id="loader" ng-show="!mostrar"></div>
 <br>
-<div class="container animate-bottom" ng-show="mostrar">
-  <div class="row">
-    <br>
-    <div class="col-sm-4" ng-repeat="Equipos in Equipos | filter:searchQuery">
-      <div class="card">
-        <img class="img-responsive" ng-src="{{Equipos.uEscudo}}" alt="Card image" height="345">
-        <div class="card-body">
-          <h5 class="card-title">{{Equipos.sNombre}}</h5>
-          <p class="card-text">
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-success">Id: {{Equipos.Id}}</li>
-              <li class="list-group-item list-group-item-success">Nombre Del Estadio: {{Equipos.sEstadio}}</li>
-            </ul>
-          </p>
-        </div>
-        <a class="btn btn-primary" ng-href="#!/Equipos/{{Equipos.Id}}">Ir</a>
-      </div>
+  <div class="container animate-bottom" ng-show="mostrar">
+    <div class="row">
       <br>
+      <div class="col-xl-4" ng-repeat="Equipos in Equipos | filter:searchQuery">
+        <div class="card" style="height: 750px;">
+          <img class="img-responsive" ng-src="{{Equipos.uEscudo}}" alt="Card image" height="345">
+          <div class="card-body">
+            <h5 class="card-title">{{Equipos.sNombre}}</h5>
+            <p class="card-text mw-100 mh-100">
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Id: {{Equipos.Id}}</li>
+                <li class="list-group-item list-group-item-success">Nombre Del Estadio: {{Equipos.sEstadio}}</li>
+              </ul>
+            </p>
+          </div>
+          <a class="btn btn-primary" ng-href="#!/Equipos/{{Equipos.Id}}">Ir</a>
+        </div>
+        <br>
+      </div>
     </div>
   </div>
-</div>
 
 <div class="container">
   <!-- Central Modal Medium Info -->
@@ -107,12 +107,33 @@
           <!--Footer-->
           <div class="modal-footer justify-content-center">
             <a type="button" class="btn btn-primary">Editar</a>
-            <a type="button" class="btn btn-danger">Eliminar</a>
+            <a type="button" class="btn btn-danger" ng-click="Eliminar(select.Id)">Eliminar</a>
           </div>
         </div>
         <!--/.Content-->
       </div>
     </div>
     <!-- Central Modal Medium Info-->
-
+    
+  <!-- Central Modal Medium Success -->
+  <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="{{Modal.classDiv}}" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead">{{Modal.Texto}}</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="{{Modal.classBtn}}" ng-href="{{Modal.Link}}">Continuar<i class="fa fa-diamond ml-1"></i></a>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    </div>
+    <!-- Central Modal Medium Success--> 
   </div>

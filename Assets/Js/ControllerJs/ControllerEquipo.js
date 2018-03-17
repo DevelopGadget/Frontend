@@ -18,7 +18,7 @@ angular.module('EquipoController', ['ngResource'])
           method: 'GET',
           isArray: true
         },
-        'remove': {
+        'delete': {
           method: 'DELETE'
         },
         'put': {
@@ -26,16 +26,19 @@ angular.module('EquipoController', ['ngResource'])
         }
       });
 
-    Equipos.getAll = function () {
+    Equipos.getAll = function (scope) {
       return Equipos.Res.query(function (data) {
         console.log(data);
+        scope.mostrar = true;
       }, function (error) {
 
       });
     };
 
     Equipos.get = function (id) {
-      return Equipos.Res.get({id: id}, function (data) {
+      return Equipos.Res.get({
+        id: id
+      }, function (data) {
         console.log(data);
       }, function (error) {
 
@@ -48,45 +51,59 @@ angular.module('EquipoController', ['ngResource'])
       }, data, function (resp) {
         console.log(resp);
         if (resp.statusCode == 200) {
-          scope.Modal = {
-            classBtn: 'btn btn-success',
-            classDiv: 'modal-dialog modal-notify modal-success',
-            Texto: 'Se Ha Registrado Satisfactoriamente',
-            Link: '#!/Equipos'
-          };
+          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Registrado Satisfactoriamente', '#!/Equipos')
         } else {
-          scope.Modal = {
-            classBtn: 'btn btn-danger',
-            classDiv: 'modal-dialog modal-notify modal-danger',
-            Texto: 'Ha Ocurrido Un Error Verifique Los Datos Ingresados',
-            Link: '#!/EquiposReg'
-          };
+          Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Verifique Los Datos Ingresados', '#!/Equipos');
         }
       }, function (error) {
         console.log(error);
-        scope.Modal = {
-          classBtn: 'btn btn-danger',
-          classDiv: 'modal-dialog modal-notify modal-danger',
-          Texto: 'Ha Ocurrido Un Error Vuelva A Intentar',
-          Link: '#!/EquiposReg'
-        };
+        Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos');
       });
       $('#Modal').modal('show')
+    }
+
+    Equipos.Remove = function (id, scope) {
+      Equipos.Res.delete({
+        id: id
+      }, function (resp) {
+        console.log(resp);
+        if (resp.statusCode == 200) {
+          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Eliminado Satisfactoriamente', '#!/Equipos');
+        } else {
+          Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos');
+        }
+      }, function (error) {
+        Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos');
+      });
+      $('#Modal').modal('show')
+    }
+
+    Equipos.Modal = function (classBtn, classDiv, Texto, Link) {
+      scope.Modal = {
+        classBtn: classBtn,
+        classDiv: classDiv,
+        Texto: Texto,
+        Link: Link
+      };
     }
 
     return Equipos;
   })
 
-  .controller("EquipoController", function ($scope, Equipos, $routeParams) {
-  
+  .controller("EquipoController", function ($scope, Equipos, $routeParams, $window) {
+
     $scope.mostrar = false;
-    $scope.Equipos = Equipos.getAll();
-    $scope.mostrar = true;
+    $scope.Equipos = Equipos.getAll($scope);
     $scope.Array = {};
+
     if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
       $scope.select = Equipos.get(String($routeParams.id));
       $('#select').modal('show')
     }
+
+    $('#select').on('hidden.bs.modal', function () {
+      $window.location.href = "#!/Equipos";
+    });
 
     $scope.Post = function () {
       if ($scope.form.$valid) {
@@ -94,4 +111,18 @@ angular.module('EquipoController', ['ngResource'])
         Equipos.Post($scope.Array, $scope);
       }
     }
+
+    $scope.Eliminar = function (id) {
+      if (id !== '' && id !== null) {
+        $scope.select = {};
+        Equipos.Remove(id, $scope);
+        scope.Modal = {
+          classBtn: 'btn btn-success',
+          classDiv: 'modal-dialog modal-notify modal-success',
+          Texto: 'Se Ha Eliminado Satisfactoriamente',
+          Link: '#!/Equipos'
+        };
+      }
+    }
+
   });
