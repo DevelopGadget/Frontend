@@ -54,6 +54,23 @@ angular.module('JugadoresController', [])
       $('#Modal').modal('show')
     }
 
+    
+    Jugadores.Remove = function (id, scope) {
+      Jugadores.Res.delete({
+        id: id
+      }, function (resp) {
+        console.log(resp);
+        if (resp.statusCode == 200) {
+          Jugadores.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Eliminado Satisfactoriamente', '#!/Jugadores', scope);
+        } else {
+          Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
+        }
+      }, function (error) {
+        Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
+      });
+      $('#Modal').modal('show')
+    }
+
     Jugadores.Modal = function (classBtn, classDiv, Texto, Link, scope) {
       scope.Modal = {
         classBtn: classBtn,
@@ -92,4 +109,12 @@ angular.module('JugadoresController', [])
         Jugadores.Create($scope.Array, $scope);
       }
     }
+
+    $scope.Delete = function (id) {
+      if (id !== '' && id !== null) {
+        $scope.select = {};
+        Jugadores.Remove(id, $scope);
+      }
+    }
+
   });

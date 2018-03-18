@@ -38,10 +38,10 @@
               <li class="list-group-item list-group-item-success">Equipo: {{Jugadores.sEquipo.sNombre}}</li>
             </ul>
           </p>
-          <a href="#!/Jugadores/{{Jugadores.Id}}" class="btn btn-primary">Ir</a>
         </div>
-        <br>
+        <a href="#!/Jugadores/{{Jugadores.Id}}" class="btn btn-primary">Ir</a>
       </div>
+      <br>
     </div>
   </div>
 </div>
@@ -64,27 +64,27 @@
           <div class="text-center">
             <img class="img-responsive" ng-src="{{copia.uJugador}}" alt="Card image" height="120">
             <!-- Material input -->
-            <form class="needs-validation container" novalidate method="POST">
+            <form class="container animate-bottom" id="form" novalidate method="POST" ng-submit="Update(copia.Id, Jugador)" name="form">
               <br>
               <div class="row">
                 <div class="col-md-4 mb-3">
                   <label for="Nombre Del Jugador">Nombre Del Jugador:</label>
                   <input type="text" class="form-control" placeholder="Nombre Del Jugador" required ng-model="Jugador.sNombre">
-                  <div class="invalid-feedback">
+                  <div ng-show="!Jugador.sNombre && form.$submitted" class="alert alert-danger">
                     Ingresar Dato
                   </div>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="Edad">Edad:</label>
                   <input type="text" class="form-control" placeholder="Edad" required ng-model="Jugador.iEdad">
-                  <div class="invalid-feedback">
+                  <div ng-show="!Jugador.iEdad && form.$submitted" class="alert alert-danger">
                     Ingresar Dato
                   </div>
                 </div>
                 <div class="col-md-4 mb-3">
                   <label for="Posición">Posición:</label>
                   <input type="text" class="form-control" placeholder="Posición" required ng-model="Jugador.sPosicion">
-                  <div class="invalid-feedback">
+                  <div ng-show="!Jugador.sPosicion && form.$submitted" class="alert alert-danger">
                     Ingresar Dato
                   </div>
                 </div>
@@ -94,65 +94,70 @@
                 <div class="col-md-3 mb-3">
                   <label for="Nombre De La Nacionalidad">Nombre De La Nacionalidad:</label>
                   <input type="text" class="form-control" placeholder="Nombre De La Nacionalidad" required ng-model="Jugador.sNacionalidad">
-                  <div class="invalid-feedback">
+                  <div ng-show="!Jugador.sNacionalidad && form.$submitted" class="alert alert-danger">
                     Ingresar Dato
                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="Url De Imagen Del Escudo De La Nacionalidad">Imagen De Selección (Url):</label>
                   <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo De La Nacionalidad" required ng-model="Jugador.uNacionalidad">
-                  <div class="invalid-feedback">
+                  <div ng-show="!Jugador.uNacionalidad && form.$submitted" class="alert alert-danger">
                     Debe ser una Url
                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="Url De Imagen De La Persona">Imagen De La Persona(Url):</label>
                   <input type="url" class="form-control" placeholder="Url De Imagen De La Persona" required ng-model="Jugador.uJugador">
-                  <div class="invalid-feedback">
+                  <div ng-show="!Jugador.uJugador && form.$submitted" class="alert alert-danger">
                     Debe ser una Url
                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <br>
+                  <br>
                   <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
-                  <select class="custom-select" required>
-                    <option value="">Seleccione</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                  <select class="custom-select" required ng-model="Jugador.sEquipo" ng-options="sEquipo.sNombre for sEquipo in Equipos">
+                    <option ng-selected="{{sEquipo.sNombre == copia.sEquipo.sNombre}}"></option>
                   </select>
-                  <div class="invalid-feedback">Seleccione un equipo</div>
+                  <div ng-show="!Jugador.sEquipo && form.$submitted" class="alert alert-danger">Seleccione un equipo</div>
                 </div>
               </div>
               <br>
-              <div class="container">
-                <div class="row">
-                  <br>
-                  <div class="col-md-5">
-                    <div class="card">
-                      <img class="img-responsive" ng-src="{{Jugador.uJugador}}" alt="Card image" height="200">
-                      <div class="card-body">
-                        <h5 class="card-title">Previzualización del jugador</h5>
+              <div class="row">
+                <div class="container">
+                  <div class="row">
+                    <br>
+                    <div class="col-md-4">
+                      <div class="card">
+                        <img class="img-responsive" ng-src="{{Jugador.uJugador}}" alt="Card image" height="200">
+                        <div class="card-body">
+                          <h5 class="card-title">Previzualización del jugador</h5>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-md-2"></div>
-                  <div class="col-md-5">
-                    <div class="card">
-                      <img class="img-responsive" ng-src="{{Jugador.uNacionalidad}}" alt="Card image" height="200">
-                      <div class="card-body">
-                        <h5 class="card-title">Previzualización de la nacionalidad</h5>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                      <div class="card">
+                        <img class="img-responsive" ng-src="{{Jugador.uNacionalidad}}" alt="Card image" height="200">
+                        <div class="card-body">
+                          <h5 class="card-title">Previzualización de la nacionalidad</h5>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+              <!--Footer-->
+              <div class="modal-footer justify-content-center text-center">
+                <button type="submit" class="btn btn-info pull-righ" id="submit">Editar</button>
+                <button class="btn btn-danger pull-righ" ng-click="Delete(Jugador.Id)">Eliminar</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <!--/.Content-->
     </div>
+    <!--/.Content-->
   </div>
-  <!-- Central Modal Medium Info-->
+</div>
+<!-- Central Modal Medium Info-->
 </div>
