@@ -38,7 +38,7 @@ angular.module("appRoutes", ["ngRoute"])
       })
 
       .otherwise({
-        redirectTO: '/Home'
+        redirectTo : '/Home'
       });
 
     $locationProvider.html5Mode({

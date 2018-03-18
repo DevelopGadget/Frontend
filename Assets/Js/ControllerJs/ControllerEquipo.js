@@ -49,7 +49,7 @@ angular.module('EquipoController', ['ngResource'])
       }, data, function (resp) {
         console.log(resp);
         if (resp.statusCode == 200) {
-          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Registrado Satisfactoriamente', '#!/Equipos', scope);
+          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Creado Satisfactoriamente', '#!/Equipos', scope);
         } else {
           Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Verifique Los Datos Ingresados', '#!/Equipos', scope);
         }

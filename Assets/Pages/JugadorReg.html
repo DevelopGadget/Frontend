@@ -17,28 +17,28 @@
     </ul>
   </div>
 </nav>
-
-<form class="needs-validation container" novalidate method="POST">
+<div id="loader" ng-show="!mostrar"></div>
+<form class="container animate-bottom" id="form" novalidate method="POST" ng-submit="Create()" name="form">
   <br>
   <div class="row">
     <div class="col-md-4 mb-3">
       <label for="Nombre Del Jugador">Nombre Del Jugador:</label>
-      <input type="text" class="form-control" placeholder="Nombre Del Jugador" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control" placeholder="Nombre Del Jugador" required ng-model="Array.sNombre">
+      <div ng-show="!Array.sNombre && form.$submitted" class="alert alert-danger">
         Ingresar Dato
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="Edad">Edad:</label>
-      <input type="text" class="form-control" placeholder="Edad" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control" placeholder="Edad" required ng-model="Array.iEdad">
+      <div ng-show="!Array.iEdad && form.$submitted" class="alert alert-danger">
         Ingresar Dato
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="Posición">Posición:</label>
-      <input type="text" class="form-control" placeholder="Posición" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control" placeholder="Posición" required ng-model="Array.sPosicion">
+      <div ng-show="!Array.sPosicion && form.$submitted" class="alert alert-danger">
         Ingresar Dato
       </div>
     </div>
@@ -47,40 +47,37 @@
   <div class="row">
     <div class="col-md-3 mb-3">
       <label for="Nombre De La Nacionalidad">Nombre De La Nacionalidad:</label>
-      <input type="text" class="form-control" placeholder="Nombre De La Nacionalidad" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control" placeholder="Nombre De La Nacionalidad" required ng-model="Array.sNacionalidad">
+      <div ng-show="!Array.sNacionalidad && form.$submitted" class="alert alert-danger">
         Ingresar Dato
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="Url De Imagen Del Escudo De La Nacionalidad">Imagen De Selección (Url):</label>
-      <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo De La Nacionalidad" required>
-      <div class="invalid-feedback">
+      <input type="url" class="form-control" placeholder="Url De Imagen Del Escudo De La Nacionalidad" required ng-model="Array.uNacionalidad">
+      <div ng-show="!Array.uNacionalidad && form.$submitted" class="alert alert-danger">
         Debe ser una Url
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="Url De Imagen De La Persona">Imagen De La Persona(Url):</label>
-      <input type="url" class="form-control" placeholder="Url De Imagen De La Persona" required>
-      <div class="invalid-feedback">
+      <input type="url" class="form-control" placeholder="Url De Imagen De La Persona" required ng-model="Array.uJugador">
+      <div ng-show="!Array.uJugador && form.$submitted" class="alert alert-danger">
         Debe ser una Url
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
-      <select class="custom-select" required>
+      <select class="custom-select" required ng-model="Array.sEquipo" ng-options="sEquipo.sNombre for sEquipo in Equipos">
         <option value="">Seleccione</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
       </select>
-      <div class="invalid-feedback">Seleccione un equipo</div>
+      <div ng-show="!Array.sEquipo && form.$submitted" class="alert alert-danger">Seleccione un equipo</div>
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col-md-12 mb-3 text-center">
-      <button type="submit" class="btn btn-primary mb-2" id="submit">Enviar</button>
+      <button type="submit" class="btn btn-primary mb-2" id="submit">Crear</button>
     </div>
   </div>
   <div class="row">
@@ -89,7 +86,7 @@
         <br>
         <div class="col-md-4">
           <div class="card">
-            <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+            <img class="img-responsive" ng-src="{{Array.uJugador}}" alt="Card image" height="345">
             <div class="card-body">
               <h5 class="card-title">Previzualización del jugador</h5>
             </div>
@@ -98,7 +95,7 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
           <div class="card">
-            <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
+            <img class="img-responsive" ng-src="{{Array.uNacionalidad}}" alt="Card image" height="345">
             <div class="card-body">
               <h5 class="card-title">Previzualización de la nacionalidad</h5>
             </div>
@@ -108,4 +105,27 @@
     </div>
   </div>
 </form>
-</html>
+
+<!-- Central Modal Medium Success -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="{{Modal.classDiv}}" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">{{Modal.Texto}}</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="{{Modal.classBtn}}" ng-href="{{Modal.Link}}">Continuar
+          <i class="fa fa-diamond ml-1"></i>
+        </a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->
