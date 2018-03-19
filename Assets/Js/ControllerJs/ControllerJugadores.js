@@ -30,10 +30,14 @@ angular.module('JugadoresController', [])
       });
     };
 
-    Jugadores.Read = function (id) {
+    Jugadores.Read = function (id, scope) {
       return Jugadores.Res.get({
         id: id
-      }, function (data) {}, function (error) {
+      }, function (data) {
+          scope.mostrar = true;
+          scope.copia = data;
+          $('#select').modal('show');
+      }, function (error) {
 
       })
     };
@@ -111,10 +115,7 @@ angular.module('JugadoresController', [])
 
     if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
       $scope.mostrar = false;
-      $scope.Jugador = Jugadores.Read(String($routeParams.id));
-      $scope.copia = Jugadores.Read(String($routeParams.id));
-      $scope.mostrar = true;
-      $('#select').modal('show');
+      $scope.Jugador = Jugadores.Read(String($routeParams.id), $scope);
     }
     $('#select').on('hidden.bs.modal', function () {
       $window.location.href = "#!/Jugadores";
@@ -129,7 +130,7 @@ angular.module('JugadoresController', [])
 
     $scope.Update = function (id, data){
       if(id !== '' &&  id !== null && $scope.form.$valid){
-        Jugadores.Update(id, {
+     /*   Jugadores.Update(id, {
           sNombre : data.sNombre,
           iEdad : data.iEdad,
           sEquipo : data.sEquipo,
@@ -137,7 +138,16 @@ angular.module('JugadoresController', [])
           sPosicion : data.sPosicion,
           uJugador : data.uJugador,
           uNacionalidad : data.uNacionalidad
-        }, $scope);
+        }, $scope); */
+        console.log({
+          sNombre : data.sNombre,
+          iEdad : data.iEdad,
+          sEquipo : data.sEquipo,
+          sNacionalidad : data.sNacionalidad,
+          sPosicion : data.sPosicion,
+          uJugador : data.uJugador,
+          uNacionalidad : data.uNacionalidad
+        });
         $scope.select = {};
         $scope.copia = {};
       }

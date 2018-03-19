@@ -46,15 +46,14 @@
     </div>
   </div>
 </div>
-
-<div class="container">
+<div id="loader" ng-show="!mostrar"></div>
+<div class="container animate-bottom">
   <!-- Central Modal Medium Info -->
   <div class="modal fade" id="select" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-info modal-lg" role="document">
       <!--Content-->
       <div class="modal-content">
         <!--Header-->
-        <div id="loader" ng-show="!mostrar"></div>
         <div class="modal-header  animate-bottom">
           <p class="heading lead">{{copia.sNombre}}</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -66,7 +65,7 @@
           <div class="text-center">
             <img class="img-responsive" ng-src="{{copia.uJugador}}" alt="Card image" height="120">
             <!-- Material input -->
-            <form class="container animate-bottom" id="form" novalidate method="POST" ng-submit="Update(copia.Id, Jugador)" name="form">
+            <form class="container" id="form" novalidate method="POST" ng-submit="Update(copia.Id, Jugador)" name="form">
               <br>
               <div class="row">
                 <div class="col-md-4 mb-3">
@@ -118,7 +117,7 @@
                   <br>
                   <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
                   <select class="custom-select" required ng-model="Jugador.sEquipo">
-                    <option ng-repeat="sEquipo in Equipos" ng-selected="sEquipo.Id == copia.sEquipo.Id">{{sEquipo.sNombre}}</option>
+                    <option ng-repeat="sEquipo in Equipos" ng-selected="copia.sEquipo.sNombre == sEquipo.sNombre" value="{{sEquipo.Id}}">{{sEquipo.sNombre}}</option>
                   </select>
                   <div ng-show="!Jugador.sEquipo && form.$submitted" class="alert alert-danger">Seleccione un equipo</div>
                 </div>
