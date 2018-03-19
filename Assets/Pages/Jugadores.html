@@ -33,6 +33,7 @@
           <p class="card-text  mw-100 mh-100">
             <ul class="list-group">
               <li class="list-group-item list-group-item-success">Id: {{Jugadores.Id}}</li>
+              <li class="list-group-item list-group-item-success">Edad: {{Jugadores.iEdad}}</li>
               <li class="list-group-item list-group-item-success">Nacionalidad: {{Jugadores.sNacionalidad}}</li>
               <li class="list-group-item list-group-item-success">Posición: {{Jugadores.sPosicion}}</li>
               <li class="list-group-item list-group-item-success">Equipo: {{Jugadores.sEquipo.sNombre}}</li>
@@ -53,7 +54,8 @@
       <!--Content-->
       <div class="modal-content">
         <!--Header-->
-        <div class="modal-header">
+        <div id="loader" ng-show="!mostrar"></div>
+        <div class="modal-header  animate-bottom">
           <p class="heading lead">{{copia.sNombre}}</p>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" class="white-text">&times;</span>
@@ -115,8 +117,8 @@
                 <div class="col-md-3 mb-3">
                   <br>
                   <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
-                  <select class="custom-select" required ng-model="Jugador.sEquipo" ng-options="sEquipo.sNombre for sEquipo in Equipos">
-                    <option ng-selected="{{sEquipo.sNombre == copia.sEquipo.sNombre}}"></option>
+                  <select class="custom-select" required ng-model="Jugador.sEquipo">
+                    <option ng-repeat="sEquipo in Equipos" ng-selected="sEquipo.Id == copia.sEquipo.Id">{{sEquipo.sNombre}}</option>
                   </select>
                   <div ng-show="!Jugador.sEquipo && form.$submitted" class="alert alert-danger">Seleccione un equipo</div>
                 </div>
@@ -161,3 +163,27 @@
 </div>
 <!-- Central Modal Medium Info-->
 </div>
+
+<!-- Central Modal Medium Success -->
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="{{Modal.classDiv}}" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">{{Modal.Texto}}</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" class="{{Modal.classBtn}}" ng-href="{{Modal.Link}}">Continuar
+          <i class="fa fa-diamond ml-1"></i>
+        </a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Success-->

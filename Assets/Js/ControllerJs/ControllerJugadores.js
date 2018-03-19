@@ -54,7 +54,22 @@ angular.module('JugadoresController', [])
       $('#Modal').modal('show')
     }
 
-    
+    Jugadores.Update = function (id, data, scope) {
+      Jugadores.Res.put({
+        id: id
+      }, data, function (resp) {
+        console.log(resp);
+        if (resp.statusCode == 200) {
+          Jugadores.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Modificado Satisfactoriamente', '#!/Jugadores', scope);
+        } else {
+          Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
+        }
+      }, function (error) {
+        Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
+      });
+      $('#Modal').modal('show')
+    }
+
     Jugadores.Remove = function (id, scope) {
       Jugadores.Res.delete({
         id: id
@@ -95,8 +110,10 @@ angular.module('JugadoresController', [])
     });
 
     if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
-      $scope.copia = Jugadores.Read(String($routeParams.id));
+      $scope.mostrar = false;
       $scope.Jugador = Jugadores.Read(String($routeParams.id));
+      $scope.copia = Jugadores.Read(String($routeParams.id));
+      $scope.mostrar = true;
       $('#select').modal('show');
     }
     $('#select').on('hidden.bs.modal', function () {
@@ -107,6 +124,22 @@ angular.module('JugadoresController', [])
       if ($scope.form.$valid) {
         console.log("post");
         Jugadores.Create($scope.Array, $scope);
+      }
+    }
+
+    $scope.Update = function (id, data){
+      if(id !== '' &&  id !== null && $scope.form.$valid){
+        Jugadores.Update(id, {
+          sNombre : data.sNombre,
+          iEdad : data.iEdad,
+          sEquipo : data.sEquipo,
+          sNacionalidad : data.sNacionalidad,
+          sPosicion : data.sPosicion,
+          uJugador : data.uJugador,
+          uNacionalidad : data.uNacionalidad
+        }, $scope);
+        $scope.select = {};
+        $scope.copia = {};
       }
     }
 
