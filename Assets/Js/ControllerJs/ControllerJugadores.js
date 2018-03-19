@@ -130,7 +130,7 @@ angular.module('JugadoresController', [])
 
     $scope.Update = function (id, data){
       if(id !== '' &&  id !== null && $scope.form.$valid){
-     /*   Jugadores.Update(id, {
+       Jugadores.Update(id, {
           sNombre : data.sNombre,
           iEdad : data.iEdad,
           sEquipo : data.sEquipo,
@@ -138,16 +138,7 @@ angular.module('JugadoresController', [])
           sPosicion : data.sPosicion,
           uJugador : data.uJugador,
           uNacionalidad : data.uNacionalidad
-        }, $scope); */
-        console.log({
-          sNombre : data.sNombre,
-          iEdad : data.iEdad,
-          sEquipo : data.sEquipo,
-          sNacionalidad : data.sNacionalidad,
-          sPosicion : data.sPosicion,
-          uJugador : data.uJugador,
-          uNacionalidad : data.uNacionalidad
-        });
+        }, $scope);
         $scope.select = {};
         $scope.copia = {};
       }
