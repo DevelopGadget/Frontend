@@ -37,8 +37,7 @@ angular.module('EquipoController', ['ngResource'])
     Equipos.Read = function (id) {
       return Equipos.Res.get({
         id: id
-      }, function (data) {
-      }, function (error) {
+      }, function (data) {}, function (error) {
 
       });
     };
@@ -77,17 +76,19 @@ angular.module('EquipoController', ['ngResource'])
     }
 
     Equipos.Update = function (id, data, scope) {
-        Equipos.Res.put({id : id}, data, function(resp){
-          console.log(resp);
-          if (resp.statusCode == 200) {
-            Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Modificado Satisfactoriamente', '#!/Equipos', scope);
-          }else{
-            Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', scope);
-          }
-        },function(error){
+      Equipos.Res.put({
+        id: id
+      }, data, function (resp) {
+        console.log(resp);
+        if (resp.statusCode == 200) {
+          Equipos.Modal('btn btn-success', 'modal-dialog modal-notify modal-success', 'Se Ha Modificado Satisfactoriamente', '#!/Equipos', scope);
+        } else {
           Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', scope);
-        });
-        $('#Modal').modal('show')
+        }
+      }, function (error) {
+        Equipos.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Equipos', scope);
+      });
+      $('#Modal').modal('show')
     }
 
     Equipos.Modal = function (classBtn, classDiv, Texto, Link, scope) {
@@ -104,14 +105,14 @@ angular.module('EquipoController', ['ngResource'])
 
   .controller("EquipoController", function ($scope, Equipos, $routeParams, $window) {
 
-    $scope.mostrar = false;
-    $scope.Equipos = Equipos.ReadAll($scope);
-    $scope.Array = {};
-
     if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
       $scope.copia = Equipos.Read(String($routeParams.id));
       $scope.Equipo = Equipos.Read(String($routeParams.id));
       $('#select').modal('show')
+    } else {
+      $scope.mostrar = false;
+      $scope.Equipos = Equipos.ReadAll($scope);
+      $scope.Array = {};
     }
 
     $('#select').on('hidden.bs.modal', function () {
@@ -132,19 +133,19 @@ angular.module('EquipoController', ['ngResource'])
       }
     }
 
-    $scope.Update = function (id, data){
-      if(id !== '' &&  id !== null && $scope.form.$valid){
+    $scope.Update = function (id, data) {
+      if (id !== '' && id !== null && $scope.form.$valid) {
         console.log({
-          sNombre : data.sNombre,
-          sEstadio : data.sEstadio,
-          uEscudo : data.uEscudo,
-          uEstadio : data.uEstadio
+          sNombre: data.sNombre,
+          sEstadio: data.sEstadio,
+          uEscudo: data.uEscudo,
+          uEstadio: data.uEstadio
         });
         Equipos.Update(id, {
-          sNombre : data.sNombre,
-          sEstadio : data.sEstadio,
-          uEscudo : data.uEscudo,
-          uEstadio : data.uEstadio
+          sNombre: data.sNombre,
+          sEstadio: data.sEstadio,
+          uEscudo: data.uEscudo,
+          uEstadio: data.uEstadio
         }, $scope);
         $scope.select = {};
         $scope.copia = {};
