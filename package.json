@@ -1,5 +1,5 @@
 {
-  "name": "Pagina-Web-Api",
+  "name": "Frontend",
   "version": "1.0.0",
   "description": "",
   "main": "Server.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FernanPro18/Pagina-Web-Api.git"
+    "url": "git+https://github.com/FernanPro18/Frontend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FernanPro18/Pagina-Web-Api/issues"
+    "url": https://github.com/FernanPro18/Frontend/issues"
   },
-  "homepage": "https://github.com/FernanPro18/Pagina-Web-Api#readme",
+  "homepage": "https://github.com/FernanPro18/Frontend#readme",
   "dependencies": {
     "express": "^4.16.3"
   },
