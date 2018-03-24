@@ -7,7 +7,7 @@ app.use(express.static('Assets'));
 //
 
 app.get('/', (req, res) =>{
-  res.sendfile('../Assets/pages/index.html');
+  res.sendfile(__dirname+'/Assets/pages/index.html');
 });
 
 app.listen(process.env.PORT || 2500, () => {

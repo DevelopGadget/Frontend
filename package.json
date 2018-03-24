@@ -4,7 +4,7 @@
   "description": "",
   "main": "Server.js",
   "scripts": {
-    "start": "nodemon Server.js"
+    "start": "node Server.js"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": https://github.com/FernanPro18/Frontend/issues"
+    "url": "https://github.com/FernanPro18/Frontend/issues"
   },
   "homepage": "https://github.com/FernanPro18/Frontend#readme",
   "dependencies": {
