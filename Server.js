@@ -1,13 +1,8 @@
-const express = require('express');
-const app = express();
-//
-app.use(express.static('assets'));
-//
-app.get('/', (req, res) =>{
-  res.sendfile(__dirname+'/assets/pages/index.html');
-});
-app.listen(process.env.PORT || 2500, () => {
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
 
-  console.log('Server Frontend Runing');
-
-});
+express()
+  .use(express.static(path.join(__dirname, 'assets')))
+  .get('/', (req, res) => res.sendfile(__dirname+'/Assets/Pages/index.html'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
