@@ -62,28 +62,21 @@
   <div class="container animate-bottom" ng-show="mostrar">
     <div class="row">
       <br>
-      <div class="col-md-3">
-        <div class="card">
-          <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
+      <div class="col-md-6 mb-3">
+        <label>Equipos</label>
+        <div class="list-group">
+          <a ng-click="Seleccion(Equipos.Id)" class="list-group-item list-group-item-action waves-effect" ng-repeat="Equipos in Equipos">{{Equipos.sNombre}}</a>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="card">
-          <img class="card-img-top" src="https://www.sbat.com/uploads/media/571f4247cc9dc.jpeg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="col-md-6 mb-3">
+        <div id="loader" ng-show="mostrarLoad"></div>
+        <div ng-show="jugadores" class="animate-bottom">
+          <label>Jugadores</label>
+          <div class="list-group">
+            <a class="list-group-item" ng-repeat="Jugadores in Jugadores">{{Jugadores.sNombre}}</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </body>
-
-</html>

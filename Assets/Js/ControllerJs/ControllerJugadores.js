@@ -103,19 +103,20 @@ angular.module('JugadoresController', [])
   })
 
   .controller('JugadoresController', function ($scope, Jugadores, $routeParams, $window, $http) {
-    $scope.mostrar = false;
-    $scope.Jugadores = Jugadores.ReadAll($scope);
-    $http.get('https://api-net.herokuapp.com/api/Equipos').then(function (resp) {
-      $scope.Equipos = resp.data;
-      $scope.mostrar = true;
-    }, function (error) {
-      Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
-      $('#select').modal('show');
-    });
 
     if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
       $scope.mostrar = false;
       $scope.Jugador = Jugadores.Read(String($routeParams.id), $scope);
+    }else{
+      $scope.mostrar = false;
+      $scope.Jugadores = Jugadores.ReadAll($scope);
+      $http.get('https://api-net.herokuapp.com/api/Equipos').then(function (resp) {
+        $scope.Equipos = resp.data;
+        $scope.mostrar = true;
+      }, function (error) {
+        Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
+        $('#select').modal('show');
+      });
     }
     $('#select').on('hidden.bs.modal', function () {
       $window.location.href = "#!/Jugadores";
