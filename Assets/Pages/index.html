@@ -35,7 +35,7 @@
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" ng-href="#!/Home">RegeTeam</a>
     <form class="form-inline col col-md-0">
-      <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-6" type="search" placeholder="Search" aria-label="Search" ng-model="searchQuery">
     </form>
     <button class="navbar-toggler col col-md-1" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
       <div class="col-md-6 mb-3">
         <label>Equipos</label>
         <div class="list-group">
-          <a ng-click="Seleccion(Equipos.Id)" class="list-group-item list-group-item-action waves-effect" ng-repeat="Equipos in Equipos">{{Equipos.sNombre}}</a>
+          <a ng-click="Seleccion(Equipos.Id)" class="list-group-item list-group-item-action waves-effect" ng-repeat="Equipos in Equipos | filter:searchQuery">{{Equipos.sNombre}}</a>
         </div>
       </div>
       <div class="col-md-6 mb-3">
