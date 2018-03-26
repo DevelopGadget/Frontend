@@ -1,14 +1,9 @@
-'use strict'
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
 
-const express = require('express');
-const path = require('path');
-const app = express();
-//
-app.use(express.static(path.join(__dirname, 'Assets')));
-//
-app.get('/', (req, res) =>{
-  res.sendfile(__dirname+'/Assets/pages/index.html');
-});
-app.listen(process.env.PORT || 2500, () => {
-  console.log('Server Frontend Runing');
-});
+express()
+  .use(express.static(path.join(__dirname, 'Assets')))
+  .set('Pages', path.join(__dirname, '/Assets/Pages'))
+  .get('/', (req, res) => res.sendfile(__dirname+'/Assets/Pages/index.html'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
