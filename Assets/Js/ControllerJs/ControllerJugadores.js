@@ -34,9 +34,10 @@ angular.module('JugadoresController', [])
       return Jugadores.Res.get({
         id: id
       }, function (data) {
-          scope.mostrar = true;
-          scope.copia = data;
-          $('#select').modal('show');
+        scope.mostrar = true;
+        scope.copia = data;
+        scope.Jugador = angular.copy(data);
+        $('#select').modal('show');
       }, function (error) {
 
       })
@@ -103,20 +104,19 @@ angular.module('JugadoresController', [])
   })
 
   .controller('JugadoresController', function ($scope, Jugadores, $routeParams, $window, $http) {
-
+    $http.get('https://api-net.herokuapp.com/api/Equipos').then(function (resp) {
+      $scope.Equipos = resp.data;
+      $scope.mostrar = true;
+    }, function (error) {
+      Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
+      $('#select').modal('show');
+    });
     if (String($routeParams.id) !== '' && String($routeParams.id) !== null && $routeParams.id !== undefined) {
       $scope.mostrar = false;
-      $scope.Jugador = Jugadores.Read(String($routeParams.id), $scope);
-    }else{
+      Jugadores.Read(String($routeParams.id), $scope);
+    } else {
       $scope.mostrar = false;
       $scope.Jugadores = Jugadores.ReadAll($scope);
-      $http.get('https://api-net.herokuapp.com/api/Equipos').then(function (resp) {
-        $scope.Equipos = resp.data;
-        $scope.mostrar = true;
-      }, function (error) {
-        Jugadores.Modal('btn btn-danger', 'modal-dialog modal-notify modal-danger', 'Ha Ocurrido Un Error Vuelva A Intentar', '#!/Jugadores', scope);
-        $('#select').modal('show');
-      });
     }
     $('#select').on('hidden.bs.modal', function () {
       $window.location.href = "#!/Jugadores";
@@ -129,16 +129,16 @@ angular.module('JugadoresController', [])
       }
     }
 
-    $scope.Update = function (id, data){
-      if(id !== '' &&  id !== null && $scope.form.$valid){
-       Jugadores.Update(id, {
-          sNombre : data.sNombre,
-          iEdad : data.iEdad,
-          sEquipo : data.sEquipo,
-          sNacionalidad : data.sNacionalidad,
-          sPosicion : data.sPosicion,
-          uJugador : data.uJugador,
-          uNacionalidad : data.uNacionalidad
+    $scope.Update = function (id, data) {
+      if (id !== '' && id !== null && $scope.form.$valid) {
+        Jugadores.Update(id, {
+          sNombre: data.sNombre,
+          iEdad: data.iEdad,
+          sEquipo: data.sEquipo,
+          sNacionalidad: data.sNacionalidad,
+          sPosicion: data.sPosicion,
+          uJugador: data.uJugador,
+          uNacionalidad: data.uNacionalidad
         }, $scope);
         $scope.select = {};
         $scope.copia = {};
@@ -151,5 +151,4 @@ angular.module('JugadoresController', [])
         Jugadores.Remove(id, $scope);
       }
     }
-
   });

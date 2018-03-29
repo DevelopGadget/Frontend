@@ -116,8 +116,7 @@
                 <div class="col-md-3 mb-3">
                   <br>
                   <label for="Seleccione Un Equipo">Seleccione Un Equipo:</label>
-                  <select class="custom-select" required ng-model="Jugador.sEquipo" ng-options="sEquipo.sNombre for sEquipo in Equipos">
-                    <option value="">Seleccione</option>
+                  <select class="custom-select" required ng-model="Jugador.sEquipo" ng-options="sEquipo.sNombre for sEquipo in Equipos"></select>
                   </select>
                   <div ng-show="!Jugador.sEquipo && form.$submitted" class="alert alert-danger">Seleccione un equipo</div>
                 </div>
